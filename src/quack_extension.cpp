@@ -18,7 +18,7 @@ inline void QuackScalarFun(DataChunk &args, ExpressionState &state, Vector &resu
     UnaryExecutor::Execute<string_t, string_t>(
 	    name_vector, result, args.size(),
 	    [&](string_t name) {
-			return StringVector::AddString(result, "Quack "+name.GetString()+" 🐥");
+			return StringVector::AddString(result, "Hello " + name.GetString()+" 🐥");
         });
 }
 
@@ -35,7 +35,7 @@ inline void QuackOpenSSLVersionScalarFun(DataChunk &args, ExpressionState &state
 
 static void LoadInternal(DatabaseInstance &instance) {
     // Register a scalar function
-    auto quack_scalar_function = ScalarFunction("quack", {LogicalType::VARCHAR}, LogicalType::VARCHAR, QuackScalarFun);
+    auto quack_scalar_function = ScalarFunction("quack2", {LogicalType::VARCHAR}, LogicalType::VARCHAR, QuackScalarFun);
     ExtensionUtil::RegisterFunction(instance, quack_scalar_function);
 
     // Register another scalar function
